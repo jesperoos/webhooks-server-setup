@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" type="text/css" href="/public/assets/style.css">
+  <head>
+    <title>GitLab Issues on project X</title>
+  </head>
+  <body>
+    <%- include('header') -%>
+    <h1>Current issues of project X</h1>
+    <% if (issues.length) { %>
+      <ul>
+        <% issues.forEach(issue => { %>
+          <li>
+            <h2><%= issue.title %></h2>
+            <div class="issueArea"> %>
+            <p><%= issue.description %></p>
+            <p>Created by <%= issue.author.name %> on <%= issue.created_at %></p>
+            <p>Labels: <%= issue.labels.join(', ') %></p></div>
+            <a href="<%= issue.web_url %>">View issue</a>
+          </li>
+        <% }); %>
+      </ul>
+    <% } else { %>
+      <p>No issues found</p>
+    <% } %>
+    <script>
+      const socket = new WebSocket('wss://cscloud7-150.lnu.se/ws');
+    
+      socket.addEventListener('open', (msg) => {
+        console.log('WebSocket connected');
+      });
+      
+      socket.addEventListener('message', (msg) => {
+        console.log('Received msg.');
+        if (msg.data === 'Issue-update' && window.location.href.includes('/issues')) {
+          location.reload();
+        }
+
+        else if (msg.data === 'ping' ) {
+          socket.send('pong')
+        }
+      });
+      
+      socket.addEventListener('close', (msg) => {
+        console.log('WebSocket disconnected');
+      });
+    </script>
+  </body>
+</html>

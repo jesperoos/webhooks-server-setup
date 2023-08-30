@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="/public/assets/style.css">
+    <head>
+        <title>stay patient!</title>
+    </head>
+    <body>
+        <%- include('header') -%>
+        <h1>Unfortunately this hasn't been implemented yet. Stay tuned!<br></h1><p></p>
+        <script>
+            const socket = new WebSocket('wss://cscloud7-150.lnu.se/ws');
+            
+            socket.addEventListener('open', (msg) => {
+                console.log('WebSocket connected');
+            });
+            
+            socket.addEventListener('message', (msg) => {
+                console.log('Received msg.');
+                if (msg.data === 'Release-update' && window.location.href.includes('/releases')) {
+                location.reload();
+                }
+
+                else if (msg.data === 'ping' ) {
+                socket.send('pong')
+                }
+            });
+            
+            socket.addEventListener('close', (msg) => {
+                console.log('WebSocket disconnected');
+            });
+        </script>  
+    </body>
+</html>

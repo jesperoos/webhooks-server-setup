@@ -1,0 +1,70 @@
+h1 {
+  color: rgb(190, 232, 252);
+}
+
+h2 {
+  color: rgb(230, 219, 206);
+}
+
+li {
+  white-space: pre-wrap;
+  color: rgb(216, 216, 216);
+}
+
+.issueArea {
+  background-color: rgba(83, 83, 83, 0.4);
+  font-size: x-large;
+  max-width: 700px;
+}
+
+body {
+  background-image: url('gitlab-wallpaper-1.png');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: static;  }
+
+nav {
+  overflow: hidden;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  text-align: center;
+  font-size: x-large;
+  font-weight: 900;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.navBorder {
+  max-width: 60%;
+  background: linear-gradient(to right, transparent, black, transparent);
+  border-bottom: 1px solid transparent;
+  margin-bottom: 20px;
+  padding: 5px 0;
+  text-align: center;
+  font-size: x-large;
+  font-weight: 900;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+a {
+  color: rgb(206, 206, 183);
+}
+
+a:hover {
+  color: darkgoldenrod;
+}
+
+textarea {
+  background-color: bisque;
+}
+
+input {
+  background-color: bisque;
+}
+
